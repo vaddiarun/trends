@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Calendar, Phone, User, Clock } from 'lucide-react';
+import { X, Calendar, Phone, User } from 'lucide-react';
 
 interface BookingModalProps {
     isOpen: boolean;
@@ -117,10 +117,9 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, prefilledS
                                 value={time}
                                 onChange={(e) => setTime(e.target.value)}
                                 min={minDateTime}
-                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 pl-11 text-white focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all placeholder:text-gray-600 [color-scheme:dark]"
+                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all placeholder:text-gray-600 [color-scheme:dark]"
                                 required
                             />
-                            <Clock className="absolute left-3.5 top-3.5 text-gray-500" size={18} />
                         </div>
                     </div>
 
