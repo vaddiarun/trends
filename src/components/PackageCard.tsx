@@ -4,10 +4,12 @@ import { MessageCircle } from 'lucide-react';
 
 interface PackageCardProps {
     pkg: PackageData;
+    onBook: (serviceName: string) => void;
 }
 
-const PackageCard: React.FC<PackageCardProps> = ({ pkg }) => {
-    const whatsappUrl = `https://wa.me/919121305649?text=Hi, I would like to book the package: ${pkg.services.join(' + ')} - Offer Price ₹${pkg.offer}`;
+const PackageCard: React.FC<PackageCardProps> = ({ pkg, onBook }) => {
+    // Construct a descriptive name for the booking
+    const bookingName = `${pkg.category.toUpperCase()} Package - ₹${pkg.offer}`;
 
     return (
         <div className="group bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-accent/30 hover:shadow-[0_0_30px_rgba(250,204,21,0.1)] hover:-translate-y-1 transition-all duration-500 h-full relative">
@@ -58,16 +60,14 @@ const PackageCard: React.FC<PackageCardProps> = ({ pkg }) => {
                         </div>
                     </div>
 
-                    <a
-                        href={whatsappUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full relative overflow-hidden flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-lg shadow-green-900/20 hover:shadow-green-500/30 group"
+                    <button
+                        onClick={() => onBook(bookingName)}
+                        className="w-full relative overflow-hidden flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-lg shadow-green-900/20 hover:shadow-green-500/30 group cursor-pointer"
                     >
                         <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
                         <MessageCircle size={18} className="relative z-10" />
-                        <span className="relative z-10 tracking-wider text-sm">BOOK VIA WHATSAPP</span>
-                    </a>
+                        <span className="relative z-10 tracking-wider text-sm">BOOK APPOINTMENT</span>
+                    </button>
                 </div>
             </div>
         </div>

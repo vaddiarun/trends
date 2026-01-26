@@ -6,10 +6,14 @@ import PackageSection from './components/PackageSection';
 import SocialLocation from './components/SocialLocation';
 import Footer from './components/Footer';
 import FloatingBookButton from './components/FloatingBookButton';
-import { MEN_PACKAGES, WOMEN_PACKAGES } from './data/packages';
+import BookingModal from './components/BookingModal';
+import ServiceList from './components/ServiceList';
+import { MEN_PACKAGES, WOMEN_PACKAGES, MEN_SINGLE_SERVICES, WOMEN_SINGLE_SERVICES } from './data/packages';
 
 function App() {
   const [activeTab, setActiveTab] = useState<'men' | 'women'>('men');
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState('');
 
   const handleNavigate = (tab: 'men' | 'women') => {
     setActiveTab(tab);
@@ -19,6 +23,16 @@ function App() {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }, 100);
+  };
+
+  const openBookingModal = (serviceName: string = '') => {
+    setSelectedService(serviceName);
+    setIsBookingModalOpen(true);
+  };
+
+  const closeBookingModal = () => {
+    setIsBookingModalOpen(false);
+    setSelectedService('');
   };
 
   return (
@@ -56,27 +70,51 @@ function App() {
 
         <div className="animate-fade-in relative z-10">
           {activeTab === 'men' ? (
-            <PackageSection
-              title="Men's Groom Packages"
-              packages={MEN_PACKAGES}
-              theme="men"
-              id="men"
-            />
+            <>
+              <PackageSection
+                title="Men's Groom Packages"
+                packages={MEN_PACKAGES}
+                theme="men"
+                id="men"
+                onBook={openBookingModal}
+              />
+              <ServiceList
+                title="Single Services"
+                services={MEN_SINGLE_SERVICES}
+                theme="men"
+                onBook={openBookingModal}
+              />
+            </>
           ) : (
-            <PackageSection
-              title="Women's Beauty Packages"
-              packages={WOMEN_PACKAGES}
-              theme="women"
-              id="women"
-            />
+            <>
+              <PackageSection
+                title="Women's Beauty Packages"
+                packages={WOMEN_PACKAGES}
+                theme="women"
+                id="women"
+                onBook={openBookingModal}
+              />
+              <ServiceList
+                title="Single Services"
+                services={WOMEN_SINGLE_SERVICES}
+                theme="women"
+                onBook={openBookingModal}
+              />
+            </>
           )}
         </div>
 
         <SocialLocation />
-        <FloatingBookButton />
+        <FloatingBookButton onClick={() => openBookingModal()} />
       </main>
 
       <Footer />
+
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={closeBookingModal}
+        prefilledService={selectedService}
+      />
     </div>
   );
 }

@@ -150,3 +150,29 @@ export const WOMEN_PACKAGES: PackageData[] = [
         category: 'spa'
     }
 ];
+
+export interface SingleServiceData {
+    name: string;
+    price: string | number;
+    category?: string;
+}
+
+export const MEN_SINGLE_SERVICES: SingleServiceData[] = [
+    { name: "Men's Haircut", price: 130 },
+    { name: "Change Of Hairstyle", price: 150 },
+    { name: "Premium Shaving", price: 99 },
+    { name: "Beard", price: 70 },
+    { name: "Head Shave", price: "150 To 200" },
+    { name: "Kids Boy Cut Below 6yrs", price: 100 },
+    { name: "Hair Wash and Conditioner", price: 50 },
+];
+
+export const WOMEN_SINGLE_SERVICES: SingleServiceData[] = [
+    { name: "Kids Haircut", price: "200 To 400" },
+    { name: "One Length Haircut", price: 250 },
+    { name: "U & V Haricut", price: 350 },
+    { name: "Layered Haircut", price: 650 },
+    { name: "Advanced Haircut With Wash", price: 1000 },
+    { name: "Front Bangs", price: 200 },
+    { name: "Hair Wash", price: 300 },
+];

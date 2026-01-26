@@ -7,9 +7,10 @@ interface PackageSectionProps {
     packages: PackageData[];
     theme: 'men' | 'women';
     id?: string;
+    onBook: (serviceName: string) => void;
 }
 
-const PackageSection: React.FC<PackageSectionProps> = ({ title, packages, theme, id }) => {
+const PackageSection: React.FC<PackageSectionProps> = ({ title, packages, theme, id, onBook }) => {
     const isMen = theme === 'men';
 
     return (
@@ -39,7 +40,7 @@ const PackageSection: React.FC<PackageSectionProps> = ({ title, packages, theme,
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     {packages.map((pkg, idx) => (
-                        <PackageCard key={idx} pkg={pkg} />
+                        <PackageCard key={idx} pkg={pkg} onBook={onBook} />
                     ))}
                 </div>
             </div>
