@@ -1,6 +1,6 @@
 import React from 'react';
 import type { PackageData } from '../data/packages';
-import { MessageCircle } from 'lucide-react';
+import { Phone } from 'lucide-react';
 
 interface PackageCardProps {
     pkg: PackageData;
@@ -65,8 +65,8 @@ const PackageCard: React.FC<PackageCardProps> = ({ pkg, onBook }) => {
                         className="w-full relative overflow-hidden flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white font-bold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-lg shadow-green-900/20 hover:shadow-green-500/30 group cursor-pointer"
                     >
                         <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
-                        <MessageCircle size={18} className="relative z-10" />
-                        <span className="relative z-10 tracking-wider text-sm">BOOK APPOINTMENT</span>
+                        <Phone size={18} className="relative z-10" />
+                        <span className="relative z-10 tracking-wider text-sm">CALL TO BOOK</span>
                     </button>
                 </div>
             </div>
